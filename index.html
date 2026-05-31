@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GameRoom — 7 giochi in un posto</title>
+<link rel="stylesheet" href="css/main.css">
+<style>
+body{background:#0a0a0f}
+
+/* ── Hero ── */
+.hero{
+  padding:90px 24px 64px;
+  max-width:900px;margin:0 auto;
+  position:relative;
+}
+.hero-eyebrow{
+  font-family:var(--font-mono);font-size:.72rem;color:var(--c1);
+  letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--bg4)}
+.hero h1{
+  font-family:var(--font-hd);font-size:clamp(3.5rem,10vw,7rem);
+  line-height:.95;letter-spacing:.02em;margin-bottom:20px;
+}
+.hero h1 em{font-style:normal;color:var(--c1)}
+.hero-sub{
+  font-size:1rem;color:var(--gray);max-width:460px;
+  margin-bottom:36px;line-height:1.7;
+}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+
+/* Big counter */
+.counter-row{
+  display:flex;gap:32px;margin-top:48px;padding-top:32px;
+  border-top:1px solid var(--bg4);flex-wrap:wrap;
+}
+.counter-item .num{
+  font-family:var(--font-hd);font-size:2.4rem;color:var(--white);line-height:1;
+}
+.counter-item .lbl2{font-size:.8rem;color:var(--gray);margin-top:4px}
+
+/* ── Section ── */
+.section{max-width:960px;margin:0 auto;padding:0 20px 64px}
+.section-head{
+  display:flex;align-items:baseline;gap:16px;margin-bottom:28px;
+}
+.section-head h2{
+  font-family:var(--font-hd);font-size:2rem;letter-spacing:.04em;
+}
+.section-head .line{flex:1;height:1px;background:var(--bg4)}
+.section-tag{
+  font-family:var(--font-mono);font-size:.68rem;color:var(--gray);
+  letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--bg4);
+  padding:3px 10px;border-radius:3px;
+}
+
+/* ── Game cards ── */
+.games-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(265px,1fr));
+  gap:14px;
+}
+.gcard{
+  display:block;
+  background:var(--bg2);
+  border:1px solid var(--bg4);
+  border-radius:10px;
+  padding:22px;
+  text-decoration:none;color:inherit;
+  transition:border-color .2s,transform .2s,background .2s;
+  position:relative;overflow:hidden;
+}
+.gcard::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at top left, rgba(255,60,172,.06) 0%,transparent 60%);
+  opacity:0;transition:opacity .3s;
+}
+.gcard:hover{
+  border-color:var(--c1);
+  transform:translateY(-3px);
+  background:var(--bg3);
+}
+.gcard:hover::before{opacity:1}
+
+.gcard-num{
+  font-family:var(--font-mono);font-size:.65rem;color:var(--gray);
+  letter-spacing:.1em;margin-bottom:14px;
+}
+.gcard-icon{font-size:2.2rem;margin-bottom:12px;line-height:1}
+.gcard-title{
+  font-family:var(--font-hd);font-size:1.35rem;letter-spacing:.04em;
+  margin-bottom:8px;color:var(--white);
+}
+.gcard-desc{font-size:.85rem;color:var(--gray);line-height:1.6;margin-bottom:16px}
+.gcard-footer{
+  display:flex;gap:6px;flex-wrap:wrap;align-items:center;
+  padding-top:14px;border-top:1px solid var(--bg4);
+}
+.gtag{
+  font-family:var(--font-mono);font-size:.62rem;
+  padding:2px 8px;border-radius:3px;border:1px solid var(--bg4);color:var(--gray);
+}
+
+/* Accent variants */
+.gcard.c-pink .gcard-title{color:var(--c1)}
+.gcard.c-acc  .gcard-title{color:var(--acc)}
+.gcard.c-mint .gcard-title{color:var(--acc2)}
+.gcard.c-pink:hover{border-color:var(--c1)}
+.gcard.c-acc:hover {border-color:var(--acc)}
+.gcard.c-mint:hover{border-color:var(--acc2)}
+
+/* ── Footer ── */
+footer{
+  border-top:1px solid var(--bg4);padding:24px;
+  text-align:center;font-family:var(--font-mono);font-size:.7rem;color:var(--gray);
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-logo">GAME<span>ROOM</span></div>
+  <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--gray)">7 giochi · classifica globale · multiplayer</div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-eyebrow">Benvenuto su Pizz.io</div>
+  <h1>GIOCA.<br><em>VINCI.</em><br>SFIDA.</h1>
+  <p class="hero-sub">7 giochi diversi — puzzle, arcade e multiplayer. Singleplayer, team o contro gli amici in tempo reale.</p>
+  <div class="hero-cta">
+    <a href="#games" class="btn btn-solid">Scegli un gioco</a>
+    <a href="games/trivia.html" class="btn btn-acc"> Multiplayer</a>
+  </div>
+  <div class="counter-row">
+    <div class="counter-item"><div class="num">7</div><div class="lbl2">Giochi</div></div>
+    <div class="counter-item"><div class="num">∞</div><div class="lbl2">Partite</div></div>
+    <div class="counter-item"><div class="num">Top 100</div><div class="lbl2">Classifica per gioco</div></div>
+    <div class="counter-item"><div class="num">Real-time</div><div class="lbl2">Multiplayer</div></div>
+  </div>
+</div>
+
+<!-- Games -->
+<div id="games">
+
+  <!-- Puzzle -->
+  <div class="section">
+    <div class="section-head">
+      <h2>Puzzle &amp; Indovina</h2>
+      <div class="line"></div>
+      <span class="section-tag">🧩 3 giochi</span>
+    </div>
+    <div class="games-grid">
+
+      <a href="games/zoom-image.html" class="gcard c-pink">
+        <div class="gcard-num">01 / PUZZLE</div>
+        <div class="gcard-icon">🔍</div>
+        <div class="gcard-title">Indovina l'Immagine</div>
+        <div class="gcard-desc">Immagine zoomata al massimo. Ogni 10 secondi lo zoom cala. Prima indovini, più punti fai.</div>
+        <div class="gcard-footer">
+          <span class="gtag">Solo</span><span class="gtag">Team</span><span class="gtag">Classifica</span>
+        </div>
+      </a>
+
+      <a href="games/wordle.html" class="gcard c-acc">
+        <div class="gcard-num">02 / PUZZLE</div>
+        <div class="gcard-icon">🔤</div>
+        <div class="gcard-title">Wordle Tematico</div>
+        <div class="gcard-desc">6 tentativi per indovinare la parola. Tre temi: Cinema, Cucina, Dialetto Romano.</div>
+        <div class="gcard-footer">
+          <span class="gtag">Solo</span><span class="gtag">3 temi</span><span class="gtag">Classifica</span>
+        </div>
+      </a>
+
+      <a href="games/geoguessr.html" class="gcard c-mint">
+        <div class="gcard-num">03 / PUZZLE</div>
+        <div class="gcard-icon">📍</div>
+        <div class="gcard-title">GeoGuessr Roma</div>
+        <div class="gcard-desc">Foto di un luogo romano. Clicca sulla mappa dove pensi si trovi. Più sei preciso, più punti prendi.</div>
+        <div class="gcard-footer">
+          <span class="gtag">Solo</span><span class="gtag">Roma</span><span class="gtag">Classifica</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Arcade -->
+  <div class="section">
+    <div class="section-head">
+      <h2>Arcade &amp; Casual</h2>
+      <div class="line"></div>
+      <span class="section-tag">⚡ 2 giochi</span>
+    </div>
+    <div class="games-grid">
+
+      <a href="games/clicker.html" class="gcard c-acc">
+        <div class="gcard-num">04 / IDLE</div>
+        <div class="gcard-icon">👆</div>
+        <div class="gcard-title">Clicker Incrementale</div>
+        <div class="gcard-desc">Clicca, accumula monete, compra potenziamenti automatici. Coinvolgente all'infinito.</div>
+        <div class="gcard-footer">
+          <span class="gtag">Solo</span><span class="gtag">Idle</span><span class="gtag">Phaser 3</span>
+        </div>
+      </a>
+
+      <a href="games/snake.html" class="gcard c-mint">
+        <div class="gcard-num">05 / ARCADE</div>
+        <div class="gcard-icon">🐍</div>
+        <div class="gcard-title">Snake Neon</div>
+        <div class="gcard-desc">Snake classico con effetti neon e velocità crescente. Frecce o WASD. Touch supportato.</div>
+        <div class="gcard-footer">
+          <span class="gtag">Solo</span><span class="gtag">Phaser 3</span><span class="gtag">Classifica</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Multi -->
+  <div class="section">
+    <div class="section-head">
+      <h2>Multiplayer</h2>
+      <div class="line"></div>
+      <span class="section-tag">🤝 2 giochi</span>
+    </div>
+    <div class="games-grid">
+
+      <a href="games/pictionary.html" class="gcard c-pink">
+        <div class="gcard-num">06 / MULTI</div>
+        <div class="gcard-icon">🎨</div>
+        <div class="gcard-title">Pictionary Online</div>
+        <div class="gcard-desc">Stanza privata con codice. Un disegna, gli altri indovinano via chat in tempo reale. Team e classifica live.</div>
+        <div class="gcard-footer">
+          <span class="gtag">Multiplayer</span><span class="gtag">Team</span><span class="gtag">Socket.io</span>
+        </div>
+      </a>
+
+      <a href="games/trivia.html" class="gcard c-acc">
+        <div class="gcard-num">07 / MULTI</div>
+        <div class="gcard-icon">🧠</div>
+        <div class="gcard-title">Trivia Competitivo</div>
+        <div class="gcard-desc">Quiz a tempo contro gli amici. 20 domande, classifica live, punteggio basato sulla velocità.</div>
+        <div class="gcard-footer">
+          <span class="gtag">Multiplayer</span><span class="gtag">Team</span><span class="gtag">Socket.io</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /games -->
+
+<footer>
+  GameRoom — fatto con Node.js, Phaser 3, Socket.io, Leaflet &nbsp;|&nbsp; apri il terminale e scrivi <code>npm start</code>
+</footer>
+
+</body>
+</html>
+EOF
+echo "index done"
